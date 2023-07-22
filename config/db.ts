@@ -8,6 +8,7 @@ export const db = ()=>{
     try {
         mongoose.connect(URL).then(()=>{
             console.log("")
+            console.log("connected successfully")
         })
     } catch (error) {
         console.log(error)

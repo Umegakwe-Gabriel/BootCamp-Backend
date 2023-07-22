@@ -4,6 +4,7 @@ export interface iAuth {
     userName?: string;
     email?: string;
     avatar?: string;
+    password?: string;
     avatarID?: string;
 }
 

@@ -1,13 +1,16 @@
-import multer from "multer"
+import multer from "multer";
+import path from "path"
 
 const storage = multer.diskStorage({
-    destination: (cb: any, req: any, file: any)=>{
-        cb(null, "upload");
+    destination: function(req, file, cb) {
+        cb(null, "upload")
     },
-    filename:(req: any, file: any, cb: any)=>{
+    filename: function(req, file, cb){
         const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
-        cb(null, file.fieldname + "-" + uniqueSuffix + ".jpg");
+        cb(
+            null, file.filename + "-" + uniqueSuffix + path.extname(file.originalname)
+        )
     }
-});
-
-export const upload = multer({storage: storage}).single("avatar");
+})
+ 
+export const upload = multer({storage: storage}).single("avatar")

@@ -8,10 +8,11 @@ dotenv.config();
 const readPort = process.env.MY_PORT;
 const app: Application = express();
 
-mainApp(app);
 const port: number = parseInt(readPort!);
+mainApp(app);
 
 const server = app.listen(process.env.PORT || port, ()=>{
+    console.log("server")
 db();
 })
 
